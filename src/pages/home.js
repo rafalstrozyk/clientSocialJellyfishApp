@@ -4,6 +4,7 @@ import axios from 'axios';
 
 // Components
 import Scream from '../components/Scream';
+import Profile from '../components/Profile';
 
 class home extends Component {
 	state = {
@@ -25,7 +26,12 @@ class home extends Component {
 
 	render() {
 		let recentScreamsMarkup = this.state.screams ? (
-			this.state.screams.map((scream) => <Scream scream={scream} key={scream.screamId} />)) : <p>Loading...</p>;
+			this.state.screams.map((scream) => (
+				<Scream scream={scream} key={scream.screamId} />
+			))
+		) : (
+			<p>Loading...</p>
+		);
 
 		return (
 			<Grid container spacing={10}>
@@ -33,7 +39,7 @@ class home extends Component {
 					{recentScreamsMarkup}
 				</Grid>
 				<Grid item sm={4} sx={12}>
-					<p>Progile...</p>
+					<Profile />
 				</Grid>
 			</Grid>
 		);
