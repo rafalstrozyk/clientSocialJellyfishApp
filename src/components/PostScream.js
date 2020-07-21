@@ -1,10 +1,7 @@
-import React, { Component, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import MyButton from '../util/MyButton';
 // MUI stuff
-import Tooltip from '@material-ui/core/Tooltip';
-import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -20,7 +17,9 @@ import { postScream, clearErrors } from '../redux/actions/dataActions';
 const styles = (theme) => ({
 	textField: theme.textField,
 	submitButton: {
-		position: 'relative'
+		position: 'relative',
+		float: 'right',
+		marginTop: 10
 	},
 	progressSpinner: {
 		position: 'absolute'
@@ -28,7 +27,7 @@ const styles = (theme) => ({
 	closeButton: {
 		position: 'absolute',
 		left: '90%',
-		top: '10%'
+		top: '6%'
 	}
 });
 class PostScream extends Component {
@@ -45,6 +44,7 @@ class PostScream extends Component {
 		if (!nextProps.UI.errors && !nextProps.UI.loading) {
 			return { body: '', errors: {} };
 		}
+		return null
 	}
 
 	// UNSAFE_componentWillReceiveProps(nextProps) {
