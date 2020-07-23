@@ -41,9 +41,9 @@ class PostScream extends Component {
 		if (nextProps.UI.errors) {
 			return { errors: nextProps.UI.errors };
 		}
-		if (!nextProps.UI.errors && !nextProps.UI.loading) {
-			return { body: '', errors: {} };
-		}
+		// if (!nextProps.UI.errors && !nextProps.UI.loading) {
+		// 	return { body: '', errors: {} };
+		// }
 		return null
 	}
 
@@ -71,6 +71,7 @@ class PostScream extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		this.props.postScream({ body: this.state.body });
+		this.setState({body: ''});
 	};
 
 	render() {
