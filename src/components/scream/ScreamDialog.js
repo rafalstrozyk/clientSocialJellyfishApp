@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
-import MyButton from '../../util/MyButton';
 import PropTypes from 'prop-types';
+import MyButton from '../../util/MyButton';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 import LikeButton from './LikeButton';
+import Comments from './Comments';
+import CommentForm from './CommentForm';
 // MUI stuff
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -17,13 +19,10 @@ import UnfoldMore from '@material-ui/icons/UnfoldMore';
 import ChatIcon from '@material-ui/icons/Chat';
 //Redux stuff
 import { connect } from 'react-redux';
-import { getScream } from '../../redux/actions/dataActions';
+import { getScream, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
-	invisibleSeparato: {
-		border: 'none',
-		margin: 4
-	},
+	invisibleSeparator: theme.invisibleSeparator,
 	profileImage: {
 		maxWidth: 200,
 		height: 200,
@@ -58,6 +57,7 @@ class ScreamDialog extends Component {
 	};
 	handleClose = () => {
 		this.setState({ open: false });
+		this.props.clearErrors();
 	};
 	render() {
 		const {
@@ -79,7 +79,7 @@ class ScreamDialog extends Component {
 				<CircularProgres size={200} thickness={2} />
 			</div>
 		) : (
-			<Grid container spacing={10}>
+			<Grid container spacing={2}>
 				<Grid item sm={5}>
 					<img src={userImage} alt='Profile' className={classes.profileImage} />
 				</Grid>
@@ -92,11 +92,11 @@ class ScreamDialog extends Component {
 					>
 						@{userHandle}
 					</Typography>
-					<hr className={classes.invisibleSeparato} />
+					<hr className={classes.invisibleSeparator} />
 					<Typography variant='body2' color='textSecondary'>
 						{dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
 					</Typography>
-					<hr className={classes.invisibleSeparato} />
+					<hr className={classes.invisibleSeparator} />
 					<Typography variant='body1'>{body}</Typography>
 					<LikeButton screamId={screamId} />
 					<span>{likeCount} likes</span>
@@ -105,6 +105,9 @@ class ScreamDialog extends Component {
 					</MyButton>
 					<span>{commentCount} comments</span>
 				</Grid>
+				<hr className={classes.invisibleSeparator} />
+				<CommentForm screamId={screamId} />
+				<Comments comments={comments} />
 			</Grid>
 		);
 		return (
@@ -139,6 +142,7 @@ class ScreamDialog extends Component {
 }
 
 ScreamDialog.propTypes = {
+	clearErrors: PropTypes.func.isRequired,
 	getScream: PropTypes.func.isRequired,
 	screamId: PropTypes.string.isRequired,
 	userHandle: PropTypes.string.isRequired,
@@ -152,7 +156,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-	getScream
+	getScream,
+	clearErrors
 };
 
 export default connect(
