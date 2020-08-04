@@ -12,12 +12,12 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+// Icons
 import EditIcon from '@material-ui/icons/Edit';
 
 const styles = (theme) => ({
-    button: {float: 'right'},
-    textField: theme.textField
+	button: { float: 'right' },
+	textField: theme.textField
 });
 
 class EditDetails extends Component {
@@ -70,10 +70,13 @@ class EditDetails extends Component {
 		const { classes } = this.props;
 		return (
 			<>
-				
-                <MyButton tip="Edit details" onClick={this.handleOpen} btnClassName={classes.button}>
-								<EditIcon color="primary" />
-							</MyButton>
+				<MyButton
+					tip='Edit details'
+					onClick={this.handleOpen}
+					btnClassName={classes.button}
+				>
+					<EditIcon color='primary' />
+				</MyButton>
 				<Dialog
 					open={this.state.open}
 					onClose={this.handleClose}

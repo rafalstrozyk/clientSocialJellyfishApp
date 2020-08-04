@@ -6,43 +6,42 @@ import { Link } from 'react-router-dom';
 import AppIcon from '../images/logo.png';
 // MUI stuff
 import Grid from '@material-ui/core/Grid';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress'
+import CircularProgress from '@material-ui/core/CircularProgress';
 // Redux stuff
-import {connect} from 'react-redux';
-import {signupUser} from '../redux/actions/userActions'
+import { connect } from 'react-redux';
+import { signupUser } from '../redux/actions/userActions';
 
 const styles = (theme) => ({
-    form: theme.form,
-    image: theme.image,
-    pageTitle: theme.pageTitle,
-    textField: theme.textField,
-    button: theme.button,
-    customError: theme.customError,
-    progress: theme.progress
+	form: theme.form,
+	image: theme.image,
+	pageTitle: theme.pageTitle,
+	textField: theme.textField,
+	button: theme.button,
+	customError: theme.customError,
+	progress: theme.progress
 });
 class signup extends Component {
 	constructor() {
 		super();
 		this.state = {
 			email: '',
-            password: '',
-            confirmPassword: '',
-            handle: '',
+			password: '',
+			confirmPassword: '',
+			handle: '',
 			errors: {}
 		};
 	}
 
 	static getDerivedStateFromProps(props, state) {
-		if(props.UI.errors) {
+		if (props.UI.errors) {
 			return {
-				
 				errors: props.UI.errors
-			}
+			};
 		}
-		return null
+		return null;
 	}
 
 	handleSubmit = (event) => {
@@ -52,11 +51,11 @@ class signup extends Component {
 		});
 		const newUserData = {
 			email: this.state.email,
-            password: this.state.password,
-            confirmPassword: this.state.confirmPassword,
-            handle: this.state.handle
+			password: this.state.password,
+			confirmPassword: this.state.confirmPassword,
+			handle: this.state.handle
 		};
-		this.props.signupUser(newUserData, this.props.history)
+		this.props.signupUser(newUserData, this.props.history);
 	};
 
 	handleChange = (event) => {
@@ -66,7 +65,10 @@ class signup extends Component {
 	};
 
 	render() {
-		const { classes, UI: {loading} } = this.props;
+		const {
+			classes,
+			UI: { loading }
+		} = this.props;
 		const { errors } = this.state;
 		return (
 			<Grid container className={classes.form}>
@@ -134,15 +136,19 @@ class signup extends Component {
 							type='submit'
 							variant='contained'
 							color='primary'
-                            className={classes.button}
-                            disabled={loading}
+							className={classes.button}
+							disabled={loading}
 						>
-                            {loading && (
-                                <CircularProgress className={classes.progress} size={30} color="secondary" />
-                            )}
+							{loading && (
+								<CircularProgress
+									className={classes.progress}
+									size={30}
+									color='secondary'
+								/>
+							)}
 							Signup
 						</Button>
-                        <br />
+						<br />
 						<small>
 							Already have an account? login<Link to='/login'>here</Link>
 						</small>
@@ -164,6 +170,8 @@ signup.propTypes = {
 const mapStateToProps = (state) => ({
 	user: state.user,
 	UI: state.UI
-})
+});
 
-export default connect(mapStateToProps, {signupUser})(withStyles(styles)(signup));
+export default connect(mapStateToProps, { signupUser })(
+	withStyles(styles)(signup)
+);

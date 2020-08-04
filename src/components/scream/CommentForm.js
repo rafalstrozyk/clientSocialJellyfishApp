@@ -19,15 +19,14 @@ class CommentForm extends Component {
 	state = {
 		body: '',
 		errors: {}
-    };
-    
-    static getDerivedStateFromProps(nextProps, prevState) {
+	};
+
+	static getDerivedStateFromProps(nextProps, prevState) {
 		if (nextProps.UI.errors) {
 			return { errors: nextProps.UI.errors };
 		}
-		return null
+		return null;
 	}
-
 
 	// componentWillReceiveProps(nextProps) {
 	// 	if (nextProps.UI.errors) {
@@ -43,8 +42,8 @@ class CommentForm extends Component {
 	};
 	handleSubmit = (event) => {
 		event.preventDefault();
-        this.props.submitComment(this.props.screamId, { body: this.state.body });
-        this.setState({body: ''})
+		this.props.submitComment(this.props.screamId, { body: this.state.body });
+		this.setState({ body: '' });
 	};
 
 	render() {

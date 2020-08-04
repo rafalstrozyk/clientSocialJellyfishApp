@@ -8,6 +8,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CircularProgres from '@material-ui/core/CircularProgress';
+// Icons
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 //redux stuff
@@ -41,10 +42,7 @@ class PostScream extends Component {
 		if (nextProps.UI.errors) {
 			return { errors: nextProps.UI.errors };
 		}
-		// if (!nextProps.UI.errors && !nextProps.UI.loading) {
-		// 	return { body: '', errors: {} };
-		// }
-		return null
+		return null;
 	}
 
 	// UNSAFE_componentWillReceiveProps(nextProps) {
@@ -71,7 +69,7 @@ class PostScream extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		this.props.postScream({ body: this.state.body });
-		this.setState({body: ''});
+		this.setState({ body: '' });
 	};
 
 	render() {

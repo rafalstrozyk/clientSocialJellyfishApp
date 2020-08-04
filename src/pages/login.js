@@ -6,22 +6,22 @@ import { Link } from 'react-router-dom';
 import AppIcon from '../images/logo.png';
 // MUI stuff
 import Grid from '@material-ui/core/Grid';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 //Redux stuff
-import {connect} from 'react-redux';
-import {loginUser} from '../redux/actions/userActions';
+import { connect } from 'react-redux';
+import { loginUser } from '../redux/actions/userActions';
 
 const styles = (theme) => ({
-    form: theme.form,
-    image: theme.image,
-    pageTitle: theme.pageTitle,
-    textField: theme.textField,
-    button: theme.button,
-    customError: theme.customError,
-    progress: theme.progress
+	form: theme.form,
+	image: theme.image,
+	pageTitle: theme.pageTitle,
+	textField: theme.textField,
+	button: theme.button,
+	customError: theme.customError,
+	progress: theme.progress
 });
 class login extends Component {
 	constructor() {
@@ -34,13 +34,12 @@ class login extends Component {
 	}
 
 	static getDerivedStateFromProps(props, state) {
-		if(props.UI.errors) {
+		if (props.UI.errors) {
 			return {
-				
 				errors: props.UI.errors
-			}
+			};
 		}
-		return null
+		return null;
 	}
 	handleSubmit = (event) => {
 		event.preventDefault();
@@ -48,7 +47,7 @@ class login extends Component {
 			email: this.state.email,
 			password: this.state.password
 		};
-		this.props.loginUser(userData, this.props.history)
+		this.props.loginUser(userData, this.props.history);
 	};
 
 	handleChange = (event) => {
@@ -58,7 +57,10 @@ class login extends Component {
 	};
 
 	render() {
-		const { classes, UI:{loading} } = this.props;
+		const {
+			classes,
+			UI: { loading }
+		} = this.props;
 		const { errors } = this.state;
 		return (
 			<Grid container className={classes.form}>
@@ -140,6 +142,9 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
 	loginUser
-}
+};
 
-export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(login));
+export default connect(
+	mapStateToProps,
+	mapActionsToProps
+)(withStyles(styles)(login));

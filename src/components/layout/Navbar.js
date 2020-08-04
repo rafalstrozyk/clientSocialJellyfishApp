@@ -28,9 +28,8 @@ class Navbar extends Component {
 										<HomeIcon />
 									</MyButton>
 								</Link>
-								
-									<Notifications />
-								
+
+								<Notifications />
 							</>
 						) : (
 							<>

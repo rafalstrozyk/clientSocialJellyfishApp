@@ -19,7 +19,6 @@ import ChatIcon from '@material-ui/icons/Chat';
 // Redux
 import { connect } from 'react-redux';
 
-
 const styles = {
 	card: {
 		position: 'relative',
@@ -36,7 +35,6 @@ const styles = {
 };
 
 class Scream extends Component {
-	
 	render() {
 		dayjs.extend(relativeTime);
 		const {
@@ -55,7 +53,6 @@ class Scream extends Component {
 				credentials: { handle }
 			}
 		} = this.props;
-		
 
 		const deleteButton =
 			authenticated && userHandle === handle ? (
@@ -88,7 +85,11 @@ class Scream extends Component {
 						<ChatIcon color='primary' />
 					</MyButton>
 					<span>{commentCount} comments</span>
-					<ScreamDialog screamId={screamId} userHandle={userHandle} openDialog={this.props.openDialog} />
+					<ScreamDialog
+						screamId={screamId}
+						userHandle={userHandle}
+						openDialog={this.props.openDialog}
+					/>
 				</CardContent>
 			</Card>
 		);
@@ -106,8 +107,4 @@ const mapStateToProps = (state) => ({
 	user: state.user
 });
 
-
-
-export default connect(
-	mapStateToProps
-)(withStyles(styles)(Scream));
+export default connect(mapStateToProps)(withStyles(styles)(Scream));

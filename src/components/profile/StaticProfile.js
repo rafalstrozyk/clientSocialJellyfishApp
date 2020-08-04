@@ -15,7 +15,7 @@ import CalendarToday from '@material-ui/icons/CalendarToday';
 
 const styles = (theme) => ({
 	paper: theme.paper,
-	profile: theme.profile,
+	profile: theme.profile
 });
 
 const StaticProfile = (props) => {

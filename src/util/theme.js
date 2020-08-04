@@ -14,22 +14,25 @@ export default {
 		}
 	},
 	typography: {
-        useNextVariants: true,
-        fontFamily: [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Arial',
-            'sans-serif',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-          ].join(',')
+		useNextVariants: true,
+		fontFamily: [
+			'-apple-system',
+			'BlinkMacSystemFont',
+			'"Segoe UI"',
+			'Roboto',
+			'"Helvetica Neue"',
+			'Arial',
+			'sans-serif',
+			'"Apple Color Emoji"',
+			'"Segoe UI Emoji"',
+			'"Segoe UI Symbol"'
+		].join(',')
 	},
 	form: {
-		textAlign: 'center'
+		textAlign: 'center',
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
 	},
 	image: {
 		margin: '20px auto 20px auto',
@@ -43,16 +46,16 @@ export default {
 		margin: '10px auto 10px auto'
 	},
 	button: {
-        marginTop: 20,
-        position: 'relative'
+		marginTop: 20,
+		position: 'relative'
 	},
 	customError: {
 		color: 'red',
 		fontSize: '0.8rem',
 		marginTop: 10
-    },
-    progress: {
-        position: 'absolute'
+	},
+	progress: {
+		position: 'absolute'
 	},
 	invisibleSeparator: {
 		border: 'none',
@@ -108,4 +111,4 @@ export default {
 			margin: '20px 10px'
 		}
 	}
-}
+};

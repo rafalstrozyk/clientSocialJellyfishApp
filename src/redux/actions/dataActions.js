@@ -30,6 +30,7 @@ export const getScreams = () => (dispatch) => {
 		});
 };
 
+// Get one scream
 export const getScream = (screamId) => (dispatch) => {
 	dispatch({ type: LOADING_UI });
 	axios
@@ -106,6 +107,7 @@ export const submitComment = (screamId, commentData) => (dispatch) => {
 		});
 };
 
+// Delete a scream
 export const deleteScream = (screamId) => (dispatch) => {
 	axios
 		.delete(`/scream/${screamId}`)
@@ -115,6 +117,7 @@ export const deleteScream = (screamId) => (dispatch) => {
 		.catch((err) => console.log(err));
 };
 
+// Get user data
 export const getUserData = (userHandle) => (dispatch) => {
 	dispatch({ type: LOADING_DATA });
 	axios

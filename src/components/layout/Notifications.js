@@ -99,16 +99,15 @@ class Notifications extends Component {
 					>
 						{notificationsIcon}
 					</IconButton>
-                    </Tooltip>
-					<Menu
-						anchorEl={anchorEl}
-						open={Boolean(anchorEl)}
-						onClose={this.handleClose}
-						onEntered={this.onMenuOpened}
-					>
-						{notificationsMarkup}
-					</Menu>
-				
+				</Tooltip>
+				<Menu
+					anchorEl={anchorEl}
+					open={Boolean(anchorEl)}
+					onClose={this.handleClose}
+					onEntered={this.onMenuOpened}
+				>
+					{notificationsMarkup}
+				</Menu>
 			</>
 		);
 	}
